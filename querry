@@ -1,0 +1,18 @@
+search for an specializations is ophthalmologist in the 63101 ZIP code. Search results should be ordered by the following criteria 
+1.Most experience
+2.Highest client recommendation rating
+3.Lowest initial consultation fee
+
+
+SELECT doctor_name, hospital_name, practicing_from, first_consultation_fee, recomm_count FROM
+(SELECT d.id, d.name as doctor_name, 
+ha.hospital_name, d.practicing_from, o.first_consultation_fee 
+FROM offices o, doctors d, doctor_specialization ds, specializations s, hosptial_affiliations ha 
+WHERE o.doctor_id = d.id AND d.id = ds.doctor_id 
+AND s.id = ds.specialization_id AND s.name = 'Ophthalmologist'
+AND o.hospital_affiliation_id = ha.id
+AND o.zip = '63101') doctor_detail, 
+(SELECT doctor_id, count(1) as recomm_count FROM client_reviews 
+WHERE is_doctor_recommended = 'Y' GROUP BY doctor_id) review_count
+WHERE doctor_detail.id = review_count.doctor_id
+ORDER BY doctor_detail.practicing_from DESC, review_count.recomm_count DESC, doctor_detail.first_consultation_fee ASC;

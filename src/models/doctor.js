@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   doctor.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    mobile_number: DataTypes.INTEGER,
+    mobile_number: DataTypes.STRING,
     gender: DataTypes.STRING,
     speaking_langages: DataTypes.STRING,
     professional_statement: DataTypes.STRING,

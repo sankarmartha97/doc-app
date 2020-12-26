@@ -5,8 +5,8 @@ const { PG_USERNAME, PG_PASSWORD, PG_HOST, PG_DATABASE, DATABASE_TYPE } = proces
 module.exports = {
   development: {
     username: PG_USERNAME || "postgres",
-    password: PG_PASSWORD || null,
-    database: PG_DATABASE || "dbname",
+    password: PG_PASSWORD || 'admin',
+    database: PG_DATABASE || "doctor_booking_app",
     host: PG_HOST || "127.0.0.1",
     dialect: DATABASE_TYPE || "postgres",
     underscored: true,
