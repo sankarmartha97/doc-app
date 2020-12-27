@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     wait_time_rating: DataTypes.INTEGER,
     bedside_manner_rating: DataTypes.INTEGER,
     overall_rating: DataTypes.INTEGER,
-    review: DataTypes.STRING,
+    review: DataTypes.STRING(500),
     is_doctor_recommended: DataTypes.STRING,
     review_date: DataTypes.DATE
   }, {

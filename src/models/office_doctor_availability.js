@@ -16,8 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   office_doctor_availability.init({
     office_id: DataTypes.INTEGER,
     day_of_week: DataTypes.STRING,
-    start_time: DataTypes.DATE,
-    end_time: DataTypes.DATE,
+    start_time: {
+      type:'TIMESTAMP'
+    },
+    end_time: 'TIMESTAMP',
     is_available: DataTypes.BOOLEAN,
     reason_of_unavailability: DataTypes.STRING
   }, {

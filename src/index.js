@@ -6,14 +6,32 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+var bunyan = require('bunyan');
+var bunyanRequest = require('bunyan-request');
 const routes = require("./routes");
 const compression = require("compression");
 const validationErrors = require("./middlewares/expressValidationErrors");
 const model = require('./models');
-const db = require('./models');
+// const db = require('./models');
 
 
 const app = express();
+
+// Set up logging
+var logger = bunyan.createLogger({
+  name: 'doctor-booking-server',
+  streams: [
+    {
+      level: 'debug',
+      stream: process.stdout
+    }
+  ]
+});
+var requestLogger = bunyanRequest({
+  logger: logger,
+  headerName: 'x-request-id'
+});
+app.use(requestLogger);
 
 /**
  * Middlewares
