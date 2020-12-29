@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   appointment.init({
     user_account_id: DataTypes.INTEGER,
     office_id: DataTypes.INTEGER,
-    probable_start_time: DataTypes.DATE,
-    actual_end_time: DataTypes.DATE,
+    probable_start_time: 'TIME',
+    actual_end_time: 'TIME',
     appointment_status_id: DataTypes.INTEGER,
     appointment_taken_Date: DataTypes.DATE,
     app_booking_channel_id: DataTypes.INTEGER

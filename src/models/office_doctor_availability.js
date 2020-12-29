@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     office_id: DataTypes.INTEGER,
     day_of_week: DataTypes.STRING,
     start_time: {
-      type:'TIMESTAMP'
+      type:'TIME'
     },
-    end_time: 'TIMESTAMP',
+    end_time: 'TIME',
     is_available: DataTypes.BOOLEAN,
     reason_of_unavailability: DataTypes.STRING
   }, {
