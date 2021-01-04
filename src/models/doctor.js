@@ -45,7 +45,17 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     speaking_langages: DataTypes.STRING,
     professional_statement: DataTypes.STRING,
-    practicing_from: DataTypes.DATE
+    practicing_from: DataTypes.DATE,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'doctor',

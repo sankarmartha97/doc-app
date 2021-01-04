@@ -14,9 +14,48 @@ const model = require('../models');
  * Auth
  */
 // router.post("/auth", validator(rules.auth), auth);
-
+// console.log(model);
 router.get("/test",function(req, res) {
-    model.doctor.findAll().then(doc => {
+    model.doctor.findAll({ logging:console.log }).then(doc => {
+        res.json(doc);
+    })
+});
+
+router.get("/testByapi",function(req, res) {
+    model.doctor.findByPk(1,{ logging:console.log }).then(doc => {
+        // console.log(doc);
+        res.json(doc);
+    })
+});
+
+router.get("/testBygender",function(req, res) {
+    model.doctor.findAll({ where: { speaking_langages: 'Telugu' ,gender:'Female'},logging: console.log }).then(doc => {
+        // console.log(doc);
+        res.json(doc);
+    })
+});
+
+router.get("/testmultitable",function(req, res) {
+    model.doctor.findAll({ where: { speaking_langages: 'Telugu' ,gender:'Female'},include: [{model: model.hosptial_affiliation,as: doctor_hosptial_affiliation}],logging: console.log }).then(doc => {
+        res.json(doc);
+    })
+})
+
+router.get("/testmultitable1",function(req, res) {
+    model.doctor.findAll({ where: { gender:'Female'},include: [model.specialization],logging: console.log }).then(doc => {
+        res.json(doc);
+    })
+})
+
+router.get("/testSpecialization", function(req, res) {
+    model.specialization.findAll({include:[model.doctor],logging: console.log}).then(doc => {
+        res.json(doc);
+    })
+})
+
+router.get("/testSpecialization/:id", function(req, res) {
+    let {id} = req.params;
+    model.specialization.findByPk(id,{include:[model.doctor],logging: console.log}).then(doc => {
         res.json(doc);
     })
 })

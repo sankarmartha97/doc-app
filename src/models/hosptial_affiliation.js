@@ -23,7 +23,17 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     countery: DataTypes.STRING,
     start_date: DataTypes.DATE,
-    end_date: DataTypes.DATE
+    end_date: DataTypes.DATE,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'hosptial_affiliation',

@@ -18,7 +18,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   app_booking_channel.init({
-    app_booking_channel_name: DataTypes.STRING
+    app_booking_channel_name: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'app_booking_channel',

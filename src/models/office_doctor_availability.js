@@ -21,7 +21,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     end_time: 'TIME',
     is_available: DataTypes.BOOLEAN,
-    reason_of_unavailability: DataTypes.STRING
+    reason_of_unavailability: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'office_doctor_availability',

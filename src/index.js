@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 // Enable http compression
 app.use(compression());
 
-model.sequelize.sync({ force:true }); 
+// model.sequelize.sync({ force:true }); 
 
 // console.log(routes);
 // model.doctor.create({name:"asbh"});
@@ -63,5 +63,5 @@ app.use(validationErrors);
  */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Service is running");
+  console.log(`Service is running on ${PORT}`);
 });

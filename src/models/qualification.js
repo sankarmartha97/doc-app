@@ -17,7 +17,17 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     doctor_id: DataTypes.INTEGER,
     institute_name: DataTypes.STRING,
-    procurement_year: DataTypes.DATE
+    procurement_year: DataTypes.DATE,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'qualification',

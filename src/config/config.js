@@ -10,7 +10,15 @@ module.exports = {
     host: PG_HOST || "127.0.0.1",
     dialect: DATABASE_TYPE || "postgres",
     underscored: true,
-    logging: false
+    logging: false,
+    define: {
+      // timestamps: false,
+      defaultScope: {
+        attributes: {
+          exclude: ["createdAt", "updatedAt"]
+        }
+      }
+    },
   },
   test: {
     username: PG_USERNAME || "root",

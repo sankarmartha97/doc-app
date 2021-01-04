@@ -22,7 +22,17 @@ module.exports = (sequelize, DataTypes) => {
     overall_rating: DataTypes.INTEGER,
     review: DataTypes.STRING(500),
     is_doctor_recommended: DataTypes.STRING,
-    review_date: DataTypes.DATE
+    review_date: DataTypes.DATE,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'client_review',

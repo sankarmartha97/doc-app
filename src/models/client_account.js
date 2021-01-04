@@ -26,7 +26,17 @@ module.exports = (sequelize, DataTypes) => {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     contact_number: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'client_account',

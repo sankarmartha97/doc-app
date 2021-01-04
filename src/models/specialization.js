@@ -18,7 +18,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   specialization.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'specialization',

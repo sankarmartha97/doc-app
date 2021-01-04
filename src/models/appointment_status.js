@@ -19,7 +19,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   appointment_status.init({
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: sequelize.fn('now'),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'appointment_status',
